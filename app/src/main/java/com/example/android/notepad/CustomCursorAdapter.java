@@ -27,39 +27,35 @@ boolean light;
         TextView note = (TextView) view.findViewById(R.id.note);
 
         // 根据主题设置背景和文本颜色
-        if (light) { // 假设有一个变量 isLightTheme 来表示当前主题
+        if (light) {
             titleView1.setBackgroundColor(context.getResources().getColor(R.color.white));
             titleView1.setTextColor(context.getResources().getColor(R.color.black));
             timestampView1.setBackgroundColor(context.getResources().getColor(R.color.white));
             timestampView1.setTextColor(context.getResources().getColor(R.color.black));
-            //note.setBackgroundColor(context.getResources().getColor(R.color.white));
-            //note.setTextColor(context.getResources().getColor(R.color.black));
+            note.setBackgroundColor(context.getResources().getColor(R.color.white));
+            note.setTextColor(context.getResources().getColor(R.color.black));
         } else {
             // 设置暗主题的颜色
             titleView1.setBackgroundColor(context.getResources().getColor(R.color.black));
             titleView1.setTextColor(context.getResources().getColor(R.color.white));
             timestampView1.setBackgroundColor(context.getResources().getColor(R.color.black));
             timestampView1.setTextColor(context.getResources().getColor(R.color.white));
-            //note.setBackgroundColor(context.getResources().getColor(R.color.black));
-            //note.setTextColor(context.getResources().getColor(R.color.white));
+            note.setBackgroundColor(context.getResources().getColor(R.color.black));
+            note.setTextColor(context.getResources().getColor(R.color.white));
         }
 
         // 获取标题
         String title = cursor.getString(cursor.getColumnIndex(NotePad.Notes.COLUMN_NAME_TITLE));
-
         // 找到对应的 TextView
-        TextView titleView = (TextView) view.findViewById(R.id.text1);  // 使用新创建的 ID
-
+        TextView titleView = (TextView) view.findViewById(R.id.text1);
         // 设置标题
         titleView.setText(title);
 
-        // Get the timestamp for the modification date
+        // 获取修改日期的时间戳
         long timestamp = cursor.getLong(cursor.getColumnIndex(NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE));
-
-        // Format the timestamp
+        // 格式化时间戳
         String formattedDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(new Date(timestamp));
-
-        // Get the TextView for the timestamp and set the formatted date
+        // 获取时间戳的 TextView 并设置格式化后的日期
         TextView timestampView = (TextView) view.findViewById(R.id.timestamp_view);
         timestampView.setText(formattedDate);
     }
