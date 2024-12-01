@@ -1,4 +1,4 @@
-**实现功能**
+### 实现功能
 
 1、NoteList界面中笔记条目增加时间戳显示
 
@@ -8,15 +8,15 @@
 
 
 
-**具体效果**
+### **具体效果**
 
 1、NoteList界面中笔记条目增加时间戳显示（显示上一次修改时间）
 
-<img title="" src="file:///D:/QQ/聊天记录/Tencent%20Files/1124409560/nt_qq/nt_data/Pic/2024-12/Ori/7c01404dca44508d02e2ee1cf3eb77ce.png" alt="7c01404dca44508d02e2ee1cf3eb77ce" style="zoom:50%;">
+<img src="file:///D:/Code/NotePad_new-master/NotePad_new-master/%E7%BB%93%E6%9E%9C%E5%9B%BE%E7%89%87/7c01404dca44508d02e2ee1cf3eb77ce.png" title="" alt="" style="zoom:50%;">
 
 2、添加笔记查询功能（点击放大镜根据标题或内容查询，弹出相应的笔记）
 
-<img src="file:///D:/QQ/聊天记录/Tencent%20Files/1124409560/nt_qq/nt_data/Pic/2024-12/Ori/c2753e108191318389eccbacc5b71d22.png" title="" alt="c2753e108191318389eccbacc5b71d22" style="zoom:25%;">
+<img title="" src="file:///D:/QQ/聊天记录/Tencent%20Files/1124409560/nt_qq/nt_data/Pic/2024-12/Ori/c2753e108191318389eccbacc5b71d22.png" alt="c2753e108191318389eccbacc5b71d22" style="zoom:50%;">
 
 3、UI美化：明、暗主题选择（默认主题为暗，可由菜单选项Theme选择明暗主题）
 
@@ -32,7 +32,7 @@
 
 <img title="" src="file:///D:/QQ/%E8%81%8A%E5%A4%A9%E8%AE%B0%E5%BD%95/Tencent%20Files/1124409560/nt_qq/nt_data/Pic/2024-12/Ori/d29163e6eba7effcf340b800cc560135.png" alt="d29163e6eba7effcf340b800cc560135" style="zoom:50%;">
 
-**主要实现逻辑**
+### **主要实现逻辑**
 
 1、NoteList界面中笔记条目增加时间戳显示
 
