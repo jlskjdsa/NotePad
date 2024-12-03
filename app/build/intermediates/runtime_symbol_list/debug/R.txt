@@ -17,6 +17,7 @@ int id context_open 0x7f040003
 int id menu_add 0x7f040004
 int id menu_dark_theme 0x7f040005
 int id menu_delete 0x7f040006
+int id menu_export 0x7f040013
 int id menu_light_theme 0x7f040007
 int id menu_paste 0x7f040008
 int id menu_revert 0x7f040009

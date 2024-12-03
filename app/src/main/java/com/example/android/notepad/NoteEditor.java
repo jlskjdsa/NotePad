@@ -37,6 +37,12 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 
 /**
  * This Activity handles "editing" a note, where editing is responding to
@@ -77,6 +83,7 @@ public class NoteEditor extends Activity {
     private Cursor mCursor;
     private EditText mText;
     private String mOriginalContent;
+    private static final int REQUEST_CODE_EXPORT = 1;
 
     /**
      * Defines a custom EditText View that draws lines between each line of text that is displayed.
@@ -445,6 +452,9 @@ public class NoteEditor extends Activity {
         case R.id.menu_revert:
             cancelNote();
             break;
+        case R.id.menu_export: // 新增的导出功能
+            exportNote();
+            break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -611,6 +621,54 @@ public class NoteEditor extends Activity {
             mCursor = null;
             getContentResolver().delete(mUri, null, null);
             mText.setText("");
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE_EXPORT && resultCode == Activity.RESULT_OK) {
+            if (data != null) {
+                Uri uri = data.getData();
+                saveNoteContentToFile(uri);
+            }
+        }
+    }
+
+    private void exportNote() {
+        if (mCursor != null) {
+            int colNoteIndex = mCursor.getColumnIndex(NotePad.Notes.COLUMN_NAME_NOTE);
+            String noteContent = mCursor.getString(colNoteIndex);
+
+            // 创建选择文件的 Intent
+            Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
+            intent.addCategory(Intent.CATEGORY_OPENABLE);
+            intent.setType("text/plain");
+            intent.putExtra(Intent.EXTRA_TITLE, "note_" + System.currentTimeMillis() + ".txt");
+
+            // 启动选择文件的 Activity
+            startActivityForResult(intent, REQUEST_CODE_EXPORT);
+        } else {
+            Toast.makeText(this, "没有可导出的内容", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void saveNoteContentToFile(Uri uri) {
+        if (mCursor != null) {
+            int colNoteIndex = mCursor.getColumnIndex(NotePad.Notes.COLUMN_NAME_NOTE);
+            String noteContent = mCursor.getString(colNoteIndex);
+
+            try {
+                OutputStream outputStream = getContentResolver().openOutputStream(uri);
+                if (outputStream != null) {
+                    outputStream.write(noteContent.getBytes());
+                    outputStream.close();
+                    Toast.makeText(this, "笔记已导出至: " + uri.getPath(), Toast.LENGTH_LONG).show();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                Toast.makeText(this, "导出失败", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }

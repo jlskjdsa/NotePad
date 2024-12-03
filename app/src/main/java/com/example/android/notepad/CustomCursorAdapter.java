@@ -32,16 +32,16 @@ boolean light;
             titleView1.setTextColor(context.getResources().getColor(R.color.black));
             timestampView1.setBackgroundColor(context.getResources().getColor(R.color.white));
             timestampView1.setTextColor(context.getResources().getColor(R.color.black));
-            note.setBackgroundColor(context.getResources().getColor(R.color.white));
-            note.setTextColor(context.getResources().getColor(R.color.black));
+            //note.setBackgroundColor(context.getResources().getColor(R.color.white));
+            //note.setTextColor(context.getResources().getColor(R.color.black));
         } else {
             // 设置暗主题的颜色
             titleView1.setBackgroundColor(context.getResources().getColor(R.color.black));
             titleView1.setTextColor(context.getResources().getColor(R.color.white));
             timestampView1.setBackgroundColor(context.getResources().getColor(R.color.black));
             timestampView1.setTextColor(context.getResources().getColor(R.color.white));
-            note.setBackgroundColor(context.getResources().getColor(R.color.black));
-            note.setTextColor(context.getResources().getColor(R.color.white));
+            //note.setBackgroundColor(context.getResources().getColor(R.color.black));
+            //note.setTextColor(context.getResources().getColor(R.color.white));
         }
 
         // 获取标题
